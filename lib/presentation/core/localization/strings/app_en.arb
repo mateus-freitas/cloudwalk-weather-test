@@ -1,0 +1,17 @@
+{
+  "appTitle": "Concert Weather",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "home": "Home",
+
+  "generalErrorMessage": "There was an error. Please, check your connection and try again.",
+  "serverOffline": "Our servers aren't responding. Please, try again later.",
+
+  "next": "Next",
+  "tryAgain": "Try Again",
+  "skip": "Skip",
+  "finish": "Finish",
+  "restart": "Restart"
+}
