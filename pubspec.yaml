@@ -36,6 +36,8 @@ dependencies:
   get_it: ^7.2.0
   injectable: ^1.5.3
   flutter_dotenv: ^5.0.2
+  json_serializable: ^6.2.0
+  mockito: ^5.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
