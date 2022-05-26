@@ -9,10 +9,10 @@ import 'package:weather_test/infrastructure/weather/weather_dto.dart';
 import 'package:weather_test/infrastructure/weather/weather_remote_data_source.dart';
 
 @Injectable(as: IWeatherRepository)
-class MovieInfoRepositoryImpl implements IWeatherRepository {
+class WeatherRepositoryImpl implements IWeatherRepository {
   final IWeatherRemoteDataSource _dataSource;
 
-  MovieInfoRepositoryImpl(this._dataSource);
+  WeatherRepositoryImpl(this._dataSource);
 
   @override
   Future<Either<OpenWeatherFailure, Weather>> getCurrentWeather(

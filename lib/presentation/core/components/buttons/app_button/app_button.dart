@@ -121,16 +121,10 @@ class _ButtonChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return Semantics(
-        label: localize(context)
-            .loadingButtonSemantics
-            .replaceFirst('X', semanticsLabel ?? title),
-        button: true,
-        child: const SizedBox(
-          height: 20,
-          child: CircularProgressIndicator.adaptive(
-            strokeWidth: 2,
-          ),
+      return const SizedBox(
+        height: 20,
+        child: CircularProgressIndicator.adaptive(
+          strokeWidth: 2,
         ),
       );
     }

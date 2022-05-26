@@ -34,6 +34,6 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i8.WeatherRemoteDataSourceImpl(
           get<_i6.IDioClient>(instanceName: 'OpenWeatherClient')));
   gh.factory<_i9.IWeatherRepository>(
-      () => _i10.MovieInfoRepositoryImpl(get<_i8.IWeatherRemoteDataSource>()));
+      () => _i10.WeatherRepositoryImpl(get<_i8.IWeatherRemoteDataSource>()));
   return get;
 }
