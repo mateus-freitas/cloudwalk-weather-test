@@ -20,11 +20,7 @@ mixin _$Weather {
   Temperature get tempMin => throw _privateConstructorUsedError;
   Temperature get tempMax => throw _privateConstructorUsedError;
   Temperature get tempFeelsLike => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get areaName => throw _privateConstructorUsedError;
-  String get weatherMain => throw _privateConstructorUsedError;
-  String get weatherDescription => throw _privateConstructorUsedError;
-  String get weatherIcon => throw _privateConstructorUsedError;
+  int get humidity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WeatherCopyWith<Weather> get copyWith => throw _privateConstructorUsedError;
@@ -39,11 +35,7 @@ abstract class $WeatherCopyWith<$Res> {
       Temperature tempMin,
       Temperature tempMax,
       Temperature tempFeelsLike,
-      String country,
-      String areaName,
-      String weatherMain,
-      String weatherDescription,
-      String weatherIcon});
+      int humidity});
 }
 
 /// @nodoc
@@ -60,11 +52,7 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
     Object? tempMin = freezed,
     Object? tempMax = freezed,
     Object? tempFeelsLike = freezed,
-    Object? country = freezed,
-    Object? areaName = freezed,
-    Object? weatherMain = freezed,
-    Object? weatherDescription = freezed,
-    Object? weatherIcon = freezed,
+    Object? humidity = freezed,
   }) {
     return _then(_value.copyWith(
       temperature: temperature == freezed
@@ -83,26 +71,10 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
           ? _value.tempFeelsLike
           : tempFeelsLike // ignore: cast_nullable_to_non_nullable
               as Temperature,
-      country: country == freezed
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      areaName: areaName == freezed
-          ? _value.areaName
-          : areaName // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherMain: weatherMain == freezed
-          ? _value.weatherMain
-          : weatherMain // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherDescription: weatherDescription == freezed
-          ? _value.weatherDescription
-          : weatherDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherIcon: weatherIcon == freezed
-          ? _value.weatherIcon
-          : weatherIcon // ignore: cast_nullable_to_non_nullable
-              as String,
+      humidity: humidity == freezed
+          ? _value.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -118,11 +90,7 @@ abstract class _$$_WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       Temperature tempMin,
       Temperature tempMax,
       Temperature tempFeelsLike,
-      String country,
-      String areaName,
-      String weatherMain,
-      String weatherDescription,
-      String weatherIcon});
+      int humidity});
 }
 
 /// @nodoc
@@ -140,11 +108,7 @@ class __$$_WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
     Object? tempMin = freezed,
     Object? tempMax = freezed,
     Object? tempFeelsLike = freezed,
-    Object? country = freezed,
-    Object? areaName = freezed,
-    Object? weatherMain = freezed,
-    Object? weatherDescription = freezed,
-    Object? weatherIcon = freezed,
+    Object? humidity = freezed,
   }) {
     return _then(_$_Weather(
       temperature: temperature == freezed
@@ -163,26 +127,10 @@ class __$$_WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
           ? _value.tempFeelsLike
           : tempFeelsLike // ignore: cast_nullable_to_non_nullable
               as Temperature,
-      country: country == freezed
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      areaName: areaName == freezed
-          ? _value.areaName
-          : areaName // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherMain: weatherMain == freezed
-          ? _value.weatherMain
-          : weatherMain // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherDescription: weatherDescription == freezed
-          ? _value.weatherDescription
-          : weatherDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      weatherIcon: weatherIcon == freezed
-          ? _value.weatherIcon
-          : weatherIcon // ignore: cast_nullable_to_non_nullable
-              as String,
+      humidity: humidity == freezed
+          ? _value.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -195,11 +143,7 @@ class _$_Weather implements _Weather {
       required this.tempMin,
       required this.tempMax,
       required this.tempFeelsLike,
-      required this.country,
-      required this.areaName,
-      required this.weatherMain,
-      required this.weatherDescription,
-      required this.weatherIcon});
+      required this.humidity});
 
   @override
   final Temperature temperature;
@@ -210,19 +154,11 @@ class _$_Weather implements _Weather {
   @override
   final Temperature tempFeelsLike;
   @override
-  final String country;
-  @override
-  final String areaName;
-  @override
-  final String weatherMain;
-  @override
-  final String weatherDescription;
-  @override
-  final String weatherIcon;
+  final int humidity;
 
   @override
   String toString() {
-    return 'Weather(temperature: $temperature, tempMin: $tempMin, tempMax: $tempMax, tempFeelsLike: $tempFeelsLike, country: $country, areaName: $areaName, weatherMain: $weatherMain, weatherDescription: $weatherDescription, weatherIcon: $weatherIcon)';
+    return 'Weather(temperature: $temperature, tempMin: $tempMin, tempMax: $tempMax, tempFeelsLike: $tempFeelsLike, humidity: $humidity)';
   }
 
   @override
@@ -236,14 +172,7 @@ class _$_Weather implements _Weather {
             const DeepCollectionEquality().equals(other.tempMax, tempMax) &&
             const DeepCollectionEquality()
                 .equals(other.tempFeelsLike, tempFeelsLike) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality().equals(other.areaName, areaName) &&
-            const DeepCollectionEquality()
-                .equals(other.weatherMain, weatherMain) &&
-            const DeepCollectionEquality()
-                .equals(other.weatherDescription, weatherDescription) &&
-            const DeepCollectionEquality()
-                .equals(other.weatherIcon, weatherIcon));
+            const DeepCollectionEquality().equals(other.humidity, humidity));
   }
 
   @override
@@ -253,11 +182,7 @@ class _$_Weather implements _Weather {
       const DeepCollectionEquality().hash(tempMin),
       const DeepCollectionEquality().hash(tempMax),
       const DeepCollectionEquality().hash(tempFeelsLike),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(areaName),
-      const DeepCollectionEquality().hash(weatherMain),
-      const DeepCollectionEquality().hash(weatherDescription),
-      const DeepCollectionEquality().hash(weatherIcon));
+      const DeepCollectionEquality().hash(humidity));
 
   @JsonKey(ignore: true)
   @override
@@ -271,11 +196,7 @@ abstract class _Weather implements Weather {
       required final Temperature tempMin,
       required final Temperature tempMax,
       required final Temperature tempFeelsLike,
-      required final String country,
-      required final String areaName,
-      required final String weatherMain,
-      required final String weatherDescription,
-      required final String weatherIcon}) = _$_Weather;
+      required final int humidity}) = _$_Weather;
 
   @override
   Temperature get temperature => throw _privateConstructorUsedError;
@@ -286,15 +207,7 @@ abstract class _Weather implements Weather {
   @override
   Temperature get tempFeelsLike => throw _privateConstructorUsedError;
   @override
-  String get country => throw _privateConstructorUsedError;
-  @override
-  String get areaName => throw _privateConstructorUsedError;
-  @override
-  String get weatherMain => throw _privateConstructorUsedError;
-  @override
-  String get weatherDescription => throw _privateConstructorUsedError;
-  @override
-  String get weatherIcon => throw _privateConstructorUsedError;
+  int get humidity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_WeatherCopyWith<_$_Weather> get copyWith =>

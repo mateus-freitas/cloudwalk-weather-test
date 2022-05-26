@@ -15,12 +15,12 @@ Future<void> setEnvironment(Env env) async {
 
 const _baseUrlKey = 'BASE_URL';
 
-String get tmdbBaseUrl {
+String get openWeatherBaseUrl {
   return dotenv.get(_baseUrlKey);
 }
 
-String get tmdbApiKey {
-  return dotenv.get('TMDB_API_KEY');
+String get openWeatherApiKey {
+  return dotenv.get('OPEN_WEATHER_API_KEY');
 }
 
 const _productionKey = 'PRODUCTION';

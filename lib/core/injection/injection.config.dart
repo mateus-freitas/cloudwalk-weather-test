@@ -8,12 +8,16 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../domain/concert_city/i_concert_city_repository.dart' as _i4;
+import '../../domain/weather/i_weather_repository.dart' as _i9;
 import '../../infrastructure/concert_cities/concert_city_local_data_source.dart'
     as _i3;
 import '../../infrastructure/concert_cities/concert_city_repository_impl.dart'
     as _i5;
+import '../../infrastructure/networking/i_dio_client.dart' as _i6;
+import '../../infrastructure/weather/weather_remote_data_source.dart' as _i8;
+import '../../infrastructure/weather/weather_repository_impl.dart' as _i10;
 import '../../networking/tmdb_dio_client.dart'
-    as _i6; // ignore_for_file: unnecessary_lambdas
+    as _i7; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -24,7 +28,12 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i3.ConcertyCityLocalDataSourceImpl());
   gh.factory<_i4.IConcertCityRepository>(() =>
       _i5.ConcertCityRepositoryImpl(get<_i3.IConcertCityLocalDataSource>()));
-  gh.singleton<_i6.OpenWeatherClient>(_i6.OpenWeatherClient(),
-      instanceName: 'TMDBClient');
+  gh.singleton<_i6.IDioClient>(_i7.OpenWeatherClient(),
+      instanceName: 'OpenWeatherClient');
+  gh.factory<_i8.IWeatherRemoteDataSource>(() =>
+      _i8.WeatherRemoteDataSourceImpl(
+          get<_i6.IDioClient>(instanceName: 'OpenWeatherClient')));
+  gh.factory<_i9.IWeatherRepository>(
+      () => _i10.MovieInfoRepositoryImpl(get<_i8.IWeatherRemoteDataSource>()));
   return get;
 }

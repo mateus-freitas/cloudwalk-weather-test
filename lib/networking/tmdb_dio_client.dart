@@ -16,11 +16,11 @@ class OpenWeatherClient extends IDioClient {
 
   @override
   Map<String, String> get baseQueryParameters =>
-      {'api_key': constants.tmdbApiKey};
+      {'appId': constants.openWeatherApiKey};
 
   @override
   int get baseReceiveTimeout => constants.defaultReceiveTimeout;
 
   @override
-  String get baseUrl => constants.tmdbBaseUrl;
+  String get baseUrl => constants.openWeatherBaseUrl;
 }
