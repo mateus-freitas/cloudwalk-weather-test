@@ -1,4 +1,4 @@
-package io.cloudwalk.weathertest.weather_test
+package io.cloudwalk.weather_test
 
 import io.flutter.embedding.android.FlutterActivity
 

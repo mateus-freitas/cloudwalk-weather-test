@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_test/presentation/core/router/router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:weather_test/presentation/core/router/routes.dart';
+import 'package:weather_test/presentation/core/theme/app_theme.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
