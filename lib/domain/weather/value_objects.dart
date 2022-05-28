@@ -11,4 +11,15 @@ class Temperature {
 
   @override
   String toString() => '${celsius.toStringAsFixed(1)} Celsius';
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+    return o is Temperature && o.kelvin == kelvin;
+  }
+
+  @override
+  int get hashCode => kelvin.hashCode;
+
+  String get displayableCelsius => '${celsius.toStringAsFixed(0)}º C';
 }

@@ -2,8 +2,10 @@ import 'package:injectable/injectable.dart';
 import 'package:weather_test/core/error/exceptions.dart';
 import 'package:weather_test/domain/concert_city/concert_city.dart';
 import 'package:weather_test/infrastructure/networking/i_dio_client.dart';
-import 'package:weather_test/infrastructure/weather/weather_dto.dart';
+import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dart';
+import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart';
 import 'package:weather_test/networking/requests/get_current_weather_request.dart';
+import 'package:weather_test/networking/requests/get_forecast_request.dart';
 import 'package:weather_test/networking/tmdb_dio_client.dart';
 
 abstract class IWeatherRemoteDataSource {
@@ -15,7 +17,8 @@ abstract class IWeatherRemoteDataSource {
   /// Performs a [GetForecastWeatherRequest] call to TMDB API
   ///
   /// Throws a [OpenWeatherException] for all possible errors
-  Future<WeatherDto> getForecastForCity(ConcertCity city, String? lang);
+  Future<List<DateAndWeatherDto>> getForecastForCity(
+      ConcertCity city, String? lang);
 }
 
 @Injectable(as: IWeatherRemoteDataSource)
@@ -44,8 +47,21 @@ class WeatherRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   }
 
   @override
-  Future<WeatherDto> getForecastForCity(ConcertCity city, String? lang) {
-    // TODO: implement getForecastForCity
-    throw UnimplementedError();
+  Future<List<DateAndWeatherDto>> getForecastForCity(
+      ConcertCity city, String? lang) async {
+    try {
+      final request = GetForecastRequest(city.latitude, city.longitude, lang);
+      final response = await _client.perform(request);
+      final temps = response.data?['list'];
+      if (temps is! List) {
+        throw OpenWeatherException(code: -1);
+      }
+      return temps.map((e) => DateAndWeatherDto.fromJson(e)).toList();
+    } on OpenWeatherException catch (_) {
+      rethrow;
+    } catch (e) {
+      print(e);
+      throw OpenWeatherException(code: -1);
+    }
   }
 }

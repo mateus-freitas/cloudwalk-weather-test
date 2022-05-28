@@ -6,7 +6,10 @@ import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:weather_test/domain/concert_city/concert_city.dart' as _i5;
-import 'package:weather_test/infrastructure/weather/weather_dto.dart' as _i2;
+import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dart'
+    as _i6;
+import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart'
+    as _i2;
 import 'package:weather_test/infrastructure/weather/weather_remote_data_source.dart'
     as _i3;
 
@@ -38,9 +41,10 @@ class MockWeatherRemoteDataSourceImpl extends _i1.Mock
               returnValue: Future<_i2.WeatherDto>.value(_FakeWeatherDto_0()))
           as _i4.Future<_i2.WeatherDto>);
   @override
-  _i4.Future<_i2.WeatherDto> getForecastForCity(
+  _i4.Future<List<_i6.DateAndWeatherDto>> getForecastForCity(
           _i5.ConcertCity? city, String? lang) =>
       (super.noSuchMethod(Invocation.method(#getForecastForCity, [city, lang]),
-              returnValue: Future<_i2.WeatherDto>.value(_FakeWeatherDto_0()))
-          as _i4.Future<_i2.WeatherDto>);
+              returnValue: Future<List<_i6.DateAndWeatherDto>>.value(
+                  <_i6.DateAndWeatherDto>[]))
+          as _i4.Future<List<_i6.DateAndWeatherDto>>);
 }

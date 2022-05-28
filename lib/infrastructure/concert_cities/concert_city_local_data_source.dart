@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_test/core/error/exceptions.dart';
@@ -21,7 +21,7 @@ class ConcertyCityLocalDataSourceImpl implements IConcertCityLocalDataSource {
       // dart:io. Ideally we'd load it from a server
       final fileAsString = kIsWeb
           ? _citiesJsonStringWeb
-          : await File('assets/concert_cities.json').readAsString();
+          : await rootBundle.loadString('assets/concert_cities.json');
       final jsonFile = json.decode(fileAsString);
       final citiesJson = jsonFile['cities'];
       if (citiesJson is List) {
