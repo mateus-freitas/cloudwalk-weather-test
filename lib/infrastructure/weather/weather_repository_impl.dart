@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:weather_test/core/error/exceptions.dart';
 import 'package:weather_test/core/error/open_weather_failure.dart';
+import 'package:weather_test/domain/city_and_weather/city_and_weather.dart';
 import 'package:weather_test/domain/concert_city/concert_city.dart';
 import 'package:weather_test/domain/weather/i_weather_repository.dart';
 import 'package:weather_test/domain/weather/weather.dart';
@@ -15,15 +16,19 @@ class WeatherRepositoryImpl implements IWeatherRepository {
   WeatherRepositoryImpl(this._dataSource);
 
   @override
-  Future<Either<OpenWeatherFailure, Weather>> getCurrentWeather(
+  Future<CityAndWeather> getCurrentWeather(
       ConcertCity city, String? lang) async {
     try {
       final weatherDto = await _dataSource.getCurrentWeather(city, lang);
-      return Right(weatherDto.toDomain());
+      return CityAndWeather(city: city, weather: Right(weatherDto.toDomain()));
     } on OpenWeatherException catch (e) {
-      return Left(OpenWeatherFailure.unknownError(code: e.code));
+      return CityAndWeather(
+          city: city,
+          weather: Left(OpenWeatherFailure.unknownError(code: e.code)));
     } catch (e) {
-      return const Left(OpenWeatherFailure.unknownError(code: -1));
+      return CityAndWeather(
+          city: city,
+          weather: const Left(OpenWeatherFailure.unknownError(code: -1)));
     }
   }
 }

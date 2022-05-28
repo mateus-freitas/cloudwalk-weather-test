@@ -6,9 +6,9 @@ part 'weather.freezed.dart';
 @freezed
 class Weather with _$Weather {
   const factory Weather(
-      {required Temperature temperature,
-      required Temperature tempMin,
-      required Temperature tempMax,
-      required Temperature tempFeelsLike,
-      required int humidity}) = _Weather;
+      {required final Temperature temperature,
+      required final Temperature tempMin,
+      required final Temperature tempMax,
+      required final Temperature tempFeelsLike,
+      required final int humidity}) = _Weather;
 }

@@ -6,5 +6,5 @@ class ConcertCitiesListState with _$ConcertCitiesListState {
   const factory ConcertCitiesListState.failed({required CacheFailure failure}) =
       _Failed;
   const factory ConcertCitiesListState.loaded(
-      {required List<ConcertCity> cities}) = _Loaded;
+      {required List<CityAndWeather> cities}) = _Loaded;
 }

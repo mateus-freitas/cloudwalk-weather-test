@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConcertCitiesListEvent {
+  String? get lang => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadConcertCities,
+    required TResult Function(String? lang) loadConcertCities,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loadConcertCities,
+    TResult Function(String? lang)? loadConcertCities,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadConcertCities,
+    TResult Function(String? lang)? loadConcertCities,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$ConcertCitiesListEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ConcertCitiesListEventCopyWith<ConcertCitiesListEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ abstract class $ConcertCitiesListEventCopyWith<$Res> {
   factory $ConcertCitiesListEventCopyWith(ConcertCitiesListEvent value,
           $Res Function(ConcertCitiesListEvent) then) =
       _$ConcertCitiesListEventCopyWithImpl<$Res>;
+  $Res call({String? lang});
 }
 
 /// @nodoc
@@ -65,13 +71,28 @@ class _$ConcertCitiesListEventCopyWithImpl<$Res>
   final ConcertCitiesListEvent _value;
   // ignore: unused_field
   final $Res Function(ConcertCitiesListEvent) _then;
+
+  @override
+  $Res call({
+    Object? lang = freezed,
+  }) {
+    return _then(_value.copyWith(
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_LoadConcertCitiesCopyWith<$Res> {
+abstract class _$$_LoadConcertCitiesCopyWith<$Res>
+    implements $ConcertCitiesListEventCopyWith<$Res> {
   factory _$$_LoadConcertCitiesCopyWith(_$_LoadConcertCities value,
           $Res Function(_$_LoadConcertCities) then) =
       __$$_LoadConcertCitiesCopyWithImpl<$Res>;
+  @override
+  $Res call({String? lang});
 }
 
 /// @nodoc
@@ -84,51 +105,75 @@ class __$$_LoadConcertCitiesCopyWithImpl<$Res>
 
   @override
   _$_LoadConcertCities get _value => super._value as _$_LoadConcertCities;
+
+  @override
+  $Res call({
+    Object? lang = freezed,
+  }) {
+    return _then(_$_LoadConcertCities(
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_LoadConcertCities implements _LoadConcertCities {
-  const _$_LoadConcertCities();
+  const _$_LoadConcertCities({this.lang});
+
+  @override
+  final String? lang;
 
   @override
   String toString() {
-    return 'ConcertCitiesListEvent.loadConcertCities()';
+    return 'ConcertCitiesListEvent.loadConcertCities(lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadConcertCities);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadConcertCities &&
+            const DeepCollectionEquality().equals(other.lang, lang));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(lang));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LoadConcertCitiesCopyWith<_$_LoadConcertCities> get copyWith =>
+      __$$_LoadConcertCitiesCopyWithImpl<_$_LoadConcertCities>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadConcertCities,
+    required TResult Function(String? lang) loadConcertCities,
   }) {
-    return loadConcertCities();
+    return loadConcertCities(lang);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loadConcertCities,
+    TResult Function(String? lang)? loadConcertCities,
   }) {
-    return loadConcertCities?.call();
+    return loadConcertCities?.call(lang);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadConcertCities,
+    TResult Function(String? lang)? loadConcertCities,
     required TResult orElse(),
   }) {
     if (loadConcertCities != null) {
-      return loadConcertCities();
+      return loadConcertCities(lang);
     }
     return orElse();
   }
@@ -163,7 +208,14 @@ class _$_LoadConcertCities implements _LoadConcertCities {
 }
 
 abstract class _LoadConcertCities implements ConcertCitiesListEvent {
-  const factory _LoadConcertCities() = _$_LoadConcertCities;
+  const factory _LoadConcertCities({final String? lang}) = _$_LoadConcertCities;
+
+  @override
+  String? get lang => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoadConcertCitiesCopyWith<_$_LoadConcertCities> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -172,21 +224,21 @@ mixin _$ConcertCitiesListState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(CacheFailure failure) failed,
-    required TResult Function(List<ConcertCity> cities) loaded,
+    required TResult Function(List<CityAndWeather> cities) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -273,7 +325,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(CacheFailure failure) failed,
-    required TResult Function(List<ConcertCity> cities) loaded,
+    required TResult Function(List<CityAndWeather> cities) loaded,
   }) {
     return loading();
   }
@@ -283,7 +335,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
   }) {
     return loading?.call();
   }
@@ -293,7 +345,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -415,7 +467,7 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(CacheFailure failure) failed,
-    required TResult Function(List<ConcertCity> cities) loaded,
+    required TResult Function(List<CityAndWeather> cities) loaded,
   }) {
     return failed(failure);
   }
@@ -425,7 +477,7 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
   }) {
     return failed?.call(failure);
   }
@@ -435,7 +487,7 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -492,7 +544,7 @@ abstract class _Failed implements ConcertCitiesListState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
-  $Res call({List<ConcertCity> cities});
+  $Res call({List<CityAndWeather> cities});
 }
 
 /// @nodoc
@@ -513,7 +565,7 @@ class __$$_LoadedCopyWithImpl<$Res>
       cities: cities == freezed
           ? _value._cities
           : cities // ignore: cast_nullable_to_non_nullable
-              as List<ConcertCity>,
+              as List<CityAndWeather>,
     ));
   }
 }
@@ -521,11 +573,12 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded({required final List<ConcertCity> cities}) : _cities = cities;
+  const _$_Loaded({required final List<CityAndWeather> cities})
+      : _cities = cities;
 
-  final List<ConcertCity> _cities;
+  final List<CityAndWeather> _cities;
   @override
-  List<ConcertCity> get cities {
+  List<CityAndWeather> get cities {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cities);
   }
@@ -557,7 +610,7 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(CacheFailure failure) failed,
-    required TResult Function(List<ConcertCity> cities) loaded,
+    required TResult Function(List<CityAndWeather> cities) loaded,
   }) {
     return loaded(cities);
   }
@@ -567,7 +620,7 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
   }) {
     return loaded?.call(cities);
   }
@@ -577,7 +630,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CacheFailure failure)? failed,
-    TResult Function(List<ConcertCity> cities)? loaded,
+    TResult Function(List<CityAndWeather> cities)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -622,9 +675,10 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements ConcertCitiesListState {
-  const factory _Loaded({required final List<ConcertCity> cities}) = _$_Loaded;
+  const factory _Loaded({required final List<CityAndWeather> cities}) =
+      _$_Loaded;
 
-  List<ConcertCity> get cities => throw _privateConstructorUsedError;
+  List<CityAndWeather> get cities => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;

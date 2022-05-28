@@ -5,9 +5,9 @@ part 'concert_city.freezed.dart';
 @freezed
 class ConcertCity with _$ConcertCity {
   const factory ConcertCity({
-    required String name,
-    required String country,
-    required double longitude,
-    required double latitude,
+    required final String name,
+    required final String country,
+    required final double longitude,
+    required final double latitude,
   }) = _ConcertCity;
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_test/application/concert_cities/concert_cities_list_bloc.dart';
 import 'package:weather_test/core/injection/injection.dart';
 import 'package:weather_test/presentation/core/helpers/constants.dart';
+import 'package:weather_test/presentation/core/localization/app_localizations.dart';
 import 'package:weather_test/presentation/core/router/routes.dart';
 import 'package:weather_test/presentation/pages/home/concert_cities_list_page.dart';
 
@@ -13,11 +14,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (route) {
     case AppRoute.home:
       return getPlatformPageRoute<void>(
-          builder: (context) => BlocProvider<ConcertCitiesListBloc>(
-                create: (context) => getIt<ConcertCitiesListBloc>()
-                  ..add(const ConcertCitiesListEvent.loadConcertCities()),
-                child: const ConcertCitiesListPage(),
-              ));
+          builder: (context) => const ConcertCitiesListPage());
     case AppRoute.favorites:
       return getPlatformPageRoute<void>(
           builder: (context) => Container(), settings: settings);

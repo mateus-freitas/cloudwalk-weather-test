@@ -36,7 +36,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
           get<_i6.IDioClient>(instanceName: 'OpenWeatherClient')));
   gh.factory<_i9.IWeatherRepository>(
       () => _i10.WeatherRepositoryImpl(get<_i8.IWeatherRemoteDataSource>()));
-  gh.factory<_i11.ConcertCitiesListBloc>(
-      () => _i11.ConcertCitiesListBloc(get<_i4.IConcertCityRepository>()));
+  gh.factory<_i11.ConcertCitiesListBloc>(() => _i11.ConcertCitiesListBloc(
+      get<_i4.IConcertCityRepository>(), get<_i9.IWeatherRepository>()));
   return get;
 }

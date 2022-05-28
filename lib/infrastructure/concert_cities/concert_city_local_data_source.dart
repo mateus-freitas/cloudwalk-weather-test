@@ -43,26 +43,26 @@ const _citiesJsonStringWeb = '''
         {
             "name": "Silverstone", 
             "country": "United Kingdom",
-            "longitude": 52.090586,
-            "latitude": -1.025873
+            "latitude": 52.090586,
+            "longitude": -1.025873
         },
         {
             "name": "São Paulo", 
             "country": "Brazil",
-            "longitude": -23.562398,
-            "latitude": -46.668755
+            "latitude": -23.562398,
+            "longitude": -46.668755
         },
         {
             "name": "Melbourne", 
             "country": "Australia",
-            "longitude": -37.821730,
-            "latitude": 145.085324
+            "latitude": -37.821730,
+            "longitude": 145.085324
         },
         {
             "name": "Monte Carlo", 
             "country": "Monaco",
-            "longitude": 43.739691,
-            "latitude": 7.427304
+            "latitude": 43.739691,
+            "longitude": 7.427304
         }
     ]
 }
