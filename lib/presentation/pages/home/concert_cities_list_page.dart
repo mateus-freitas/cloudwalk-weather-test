@@ -10,6 +10,7 @@ import 'package:weather_test/presentation/core/components/states/error_state_vie
 import 'package:weather_test/presentation/core/helpers/constants.dart';
 import 'package:weather_test/presentation/core/localization/app_localizations.dart';
 import 'package:weather_test/presentation/core/responsive/responsive_layout.dart';
+import 'package:weather_test/presentation/core/theme/app_colors.dart';
 
 class ConcertCitiesListPage extends StatelessWidget {
   const ConcertCitiesListPage({Key? key}) : super(key: key);
@@ -60,48 +61,79 @@ class _LoadedCities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
-      large: Container(),
+      large: GridView.builder(
+          padding: const EdgeInsets.all(Margin.xs),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisExtent: 80,
+              crossAxisSpacing: Margin.xxs,
+              mainAxisSpacing: Margin.xxs),
+          itemBuilder: (context, index) {
+            return _CityCard(item: citiesWithWeather[index]);
+          },
+          itemCount: citiesWithWeather.length),
       small: ListView.separated(
         padding: const EdgeInsets.all(Margin.xs),
         itemBuilder: (context, index) {
-          final city = citiesWithWeather[index].city;
-          final weather = citiesWithWeather[index].weather;
-          return Container(
-            color: Colors.yellow,
-            padding: const EdgeInsets.all(Margin.xs),
-            child: Row(children: [
-              Expanded(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text(city.name)],
-              )),
-              Expanded(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  weather == null
-                      ? SizedBox(
-                          width: 40,
-                          child: CircularProgressIndicator.adaptive(),
-                        )
-                      : weather.fold(
-                          (l) => IconButton(
-                              onPressed: () {}, icon: Icon(Icons.refresh)),
-                          (r) => Column(
-                                children: [
-                                  Text(
-                                      '${r.temperature.celsius.toStringAsFixed(0)}ºC')
-                                ],
-                              ))
-                ],
-              ))
-            ]),
-          );
+          return _CityCard(item: citiesWithWeather[index]);
         },
         itemCount: citiesWithWeather.length,
         separatorBuilder: (BuildContext context, int index) => const SizedBox(
           height: Margin.xxs,
         ),
+      ),
+    );
+  }
+}
+
+class _CityCard extends StatelessWidget {
+  final CityAndWeather item;
+  const _CityCard({Key? key, required this.item}) : super(key: key);
+
+  bool get _isLoading => item.weather == null;
+  bool get _loadedWeather => item.weather != null && item.weather!.isRight();
+
+  @override
+  Widget build(BuildContext context) {
+    final city = item.city;
+    final weather = item.weather;
+    final borderRadius = BorderRadius.circular(12);
+    return InkWell(
+      borderRadius: borderRadius,
+      onTap: _loadedWeather ? () {} : null,
+      child: Container(
+        decoration: BoxDecoration(
+            color: AppColors.neutral20, borderRadius: borderRadius),
+        padding: const EdgeInsets.all(Margin.xs),
+        child: Row(children: [
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Text(city.name)],
+          )),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              _isLoading
+                  ? const SizedBox(
+                      width: 40,
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : weather!.fold(
+                      (l) => IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.refresh)),
+                      (r) => Column(
+                            children: [
+                              Text(
+                                  '${r.temperature.celsius.toStringAsFixed(0)}º C')
+                            ],
+                          ))
+            ],
+          ))
+        ]),
       ),
     );
   }
