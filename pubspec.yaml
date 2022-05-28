@@ -65,5 +65,6 @@ flutter:
   generate: true
 
   assets:
+    - assets/
     - .env_dev
     - .env_prod

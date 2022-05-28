@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:weather_test/core/injection/injection.config.dart';
 import 'package:weather_test/infrastructure/core/constants.dart';
 
-final sl = GetIt.instance;
+final getIt = GetIt.instance;
 
 @injectableInit
 void configureInjection(Env environment) =>
-    $initGetIt(sl, environment: environment.name);
+    $initGetIt(getIt, environment: environment.name);
