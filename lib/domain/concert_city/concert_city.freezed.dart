@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConcertCity {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
@@ -31,7 +32,12 @@ abstract class $ConcertCityCopyWith<$Res> {
   factory $ConcertCityCopyWith(
           ConcertCity value, $Res Function(ConcertCity) then) =
       _$ConcertCityCopyWithImpl<$Res>;
-  $Res call({String name, String country, double longitude, double latitude});
+  $Res call(
+      {String id,
+      String name,
+      String country,
+      double longitude,
+      double latitude});
 }
 
 /// @nodoc
@@ -44,12 +50,17 @@ class _$ConcertCityCopyWithImpl<$Res> implements $ConcertCityCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? country = freezed,
     Object? longitude = freezed,
     Object? latitude = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -77,7 +88,12 @@ abstract class _$$_ConcertCityCopyWith<$Res>
           _$_ConcertCity value, $Res Function(_$_ConcertCity) then) =
       __$$_ConcertCityCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String country, double longitude, double latitude});
+  $Res call(
+      {String id,
+      String name,
+      String country,
+      double longitude,
+      double latitude});
 }
 
 /// @nodoc
@@ -92,12 +108,17 @@ class __$$_ConcertCityCopyWithImpl<$Res> extends _$ConcertCityCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? country = freezed,
     Object? longitude = freezed,
     Object? latitude = freezed,
   }) {
     return _then(_$_ConcertCity(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -122,11 +143,14 @@ class __$$_ConcertCityCopyWithImpl<$Res> extends _$ConcertCityCopyWithImpl<$Res>
 
 class _$_ConcertCity implements _ConcertCity {
   const _$_ConcertCity(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.country,
       required this.longitude,
       required this.latitude});
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -138,7 +162,7 @@ class _$_ConcertCity implements _ConcertCity {
 
   @override
   String toString() {
-    return 'ConcertCity(name: $name, country: $country, longitude: $longitude, latitude: $latitude)';
+    return 'ConcertCity(id: $id, name: $name, country: $country, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -146,6 +170,7 @@ class _$_ConcertCity implements _ConcertCity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ConcertCity &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.longitude, longitude) &&
@@ -155,6 +180,7 @@ class _$_ConcertCity implements _ConcertCity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(longitude),
@@ -168,11 +194,14 @@ class _$_ConcertCity implements _ConcertCity {
 
 abstract class _ConcertCity implements ConcertCity {
   const factory _ConcertCity(
-      {required final String name,
+      {required final String id,
+      required final String name,
       required final String country,
       required final double longitude,
       required final double latitude}) = _$_ConcertCity;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

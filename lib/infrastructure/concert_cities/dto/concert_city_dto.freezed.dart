@@ -20,6 +20,7 @@ ConcertCityDto _$ConcertCityDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ConcertCityDto {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
@@ -36,7 +37,12 @@ abstract class $ConcertCityDtoCopyWith<$Res> {
   factory $ConcertCityDtoCopyWith(
           ConcertCityDto value, $Res Function(ConcertCityDto) then) =
       _$ConcertCityDtoCopyWithImpl<$Res>;
-  $Res call({String name, String country, double longitude, double latitude});
+  $Res call(
+      {String id,
+      String name,
+      String country,
+      double longitude,
+      double latitude});
 }
 
 /// @nodoc
@@ -50,12 +56,17 @@ class _$ConcertCityDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? country = freezed,
     Object? longitude = freezed,
     Object? latitude = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -83,7 +94,12 @@ abstract class _$$_ConcertCityDtoCopyWith<$Res>
           _$_ConcertCityDto value, $Res Function(_$_ConcertCityDto) then) =
       __$$_ConcertCityDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String country, double longitude, double latitude});
+  $Res call(
+      {String id,
+      String name,
+      String country,
+      double longitude,
+      double latitude});
 }
 
 /// @nodoc
@@ -99,12 +115,17 @@ class __$$_ConcertCityDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? country = freezed,
     Object? longitude = freezed,
     Object? latitude = freezed,
   }) {
     return _then(_$_ConcertCityDto(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -129,7 +150,8 @@ class __$$_ConcertCityDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConcertCityDto implements _ConcertCityDto {
   const _$_ConcertCityDto(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.country,
       required this.longitude,
       required this.latitude});
@@ -137,6 +159,8 @@ class _$_ConcertCityDto implements _ConcertCityDto {
   factory _$_ConcertCityDto.fromJson(Map<String, dynamic> json) =>
       _$$_ConcertCityDtoFromJson(json);
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -148,7 +172,7 @@ class _$_ConcertCityDto implements _ConcertCityDto {
 
   @override
   String toString() {
-    return 'ConcertCityDto(name: $name, country: $country, longitude: $longitude, latitude: $latitude)';
+    return 'ConcertCityDto(id: $id, name: $name, country: $country, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -156,6 +180,7 @@ class _$_ConcertCityDto implements _ConcertCityDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ConcertCityDto &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.longitude, longitude) &&
@@ -166,6 +191,7 @@ class _$_ConcertCityDto implements _ConcertCityDto {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(longitude),
@@ -184,7 +210,8 @@ class _$_ConcertCityDto implements _ConcertCityDto {
 
 abstract class _ConcertCityDto implements ConcertCityDto {
   const factory _ConcertCityDto(
-      {required final String name,
+      {required final String id,
+      required final String name,
       required final String country,
       required final double longitude,
       required final double latitude}) = _$_ConcertCityDto;
@@ -192,6 +219,8 @@ abstract class _ConcertCityDto implements ConcertCityDto {
   factory _ConcertCityDto.fromJson(Map<String, dynamic> json) =
       _$_ConcertCityDto.fromJson;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

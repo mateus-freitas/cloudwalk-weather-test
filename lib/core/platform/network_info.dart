@@ -1,11 +1,12 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;
 }
 
+@Injectable(as: NetworkInfo)
 class NetworkInfoImpl implements NetworkInfo {
-  // ALERT: this lib has a not-very-good limitation on Android
   final Connectivity connectivity;
 
   NetworkInfoImpl(this.connectivity);

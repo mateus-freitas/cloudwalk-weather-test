@@ -7,6 +7,7 @@ part 'concert_city_dto.g.dart';
 @freezed
 class ConcertCityDto with _$ConcertCityDto {
   const factory ConcertCityDto({
+    required String id,
     required String name,
     required String country,
     required double longitude,
@@ -19,5 +20,9 @@ class ConcertCityDto with _$ConcertCityDto {
 
 extension ConcertCityDtoX on ConcertCityDto {
   ConcertCity toDomain() => ConcertCity(
-      name: name, country: country, longitude: longitude, latitude: latitude);
+      id: id,
+      name: name,
+      country: country,
+      longitude: longitude,
+      latitude: latitude);
 }

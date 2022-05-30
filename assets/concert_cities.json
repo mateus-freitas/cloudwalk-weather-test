@@ -1,24 +1,28 @@
 {
     "cities": [
         {
+            "id": "city_1", 
             "name": "Silverstone", 
             "country": "United Kingdom",
             "latitude": 52.090586,
             "longitude": -1.025873
         },
         {
+            "id": "city_2", 
             "name": "São Paulo", 
             "country": "Brazil",
             "latitude": -23.562398,
             "longitude": -46.668755
         },
         {
+            "id": "city_3", 
             "name": "Melbourne", 
             "country": "Australia",
             "latitude": -37.821730,
             "longitude": 145.085324
         },
         {
+            "id": "city_4", 
             "name": "Monte Carlo", 
             "country": "Monaco",
             "latitude": 43.739691,

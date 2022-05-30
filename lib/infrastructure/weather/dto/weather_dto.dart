@@ -15,6 +15,13 @@ class WeatherDto with _$WeatherDto {
     @JsonKey(name: 'feels_like') required double tempFeelsLike,
   }) = _WeatherDto;
 
+  factory WeatherDto.fromDomain(Weather weather) => WeatherDto(
+      temperature: weather.temperature.kelvin,
+      tempMin: weather.tempMin.kelvin,
+      tempMax: weather.tempMax.kelvin,
+      humidity: weather.humidity,
+      tempFeelsLike: weather.tempFeelsLike.kelvin);
+
   factory WeatherDto.fromJson(Map<String, dynamic> json) =>
       _$WeatherDtoFromJson(json);
 }
