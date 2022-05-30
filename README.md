@@ -1,17 +1,19 @@
 # weather_test
 
-A new Flutter project.
+An app to check the weather and a 5-day forecast on cities where a band will perform.
+
+## Introduction
+
+It's a technical test for Cloudwalk.
+Using Flutter with BLoC; injectable and get_it for dependency injection; freezed for union cases and data classes.
+The architecture is based on Clean Code and DDD.
+
+![App architecture](app_architecture_readme.jpg)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Setup .env files: use .template_env to create the .env_dev and .env_prod files
+2. `$ flutter pub get`
+3. `$ flutter pub run build_runner build` (for dotenv, freezed, injectable and mockito)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # cloudwalk-weather-test

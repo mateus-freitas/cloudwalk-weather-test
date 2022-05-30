@@ -23,7 +23,7 @@ import '../../infrastructure/networking/i_dio_client.dart' as _i8;
 import '../../infrastructure/weather/weather_local_data_source.dart' as _i10;
 import '../../infrastructure/weather/weather_remote_data_source.dart' as _i11;
 import '../../infrastructure/weather/weather_repository_impl.dart' as _i13;
-import '../../networking/tmdb_dio_client.dart' as _i9;
+import '../../networking/open_weather_client.dart' as _i9;
 import '../platform/network_info.dart' as _i14;
 import 'modules.dart' as _i19; // ignore_for_file: unnecessary_lambdas
 
