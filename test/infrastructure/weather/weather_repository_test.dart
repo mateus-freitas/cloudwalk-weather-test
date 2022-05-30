@@ -1,17 +1,25 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:weather_test/core/platform/network_info.dart';
+import 'package:weather_test/infrastructure/weather/weather_local_data_source.dart';
 import 'package:weather_test/infrastructure/weather/weather_remote_data_source.dart';
 import 'package:weather_test/infrastructure/weather/weather_repository_impl.dart';
 import 'weather_repository_test.mocks.dart';
 
-@GenerateMocks([WeatherRemoteDataSourceImpl])
+@GenerateMocks(
+    [WeatherRemoteDataSourceImpl, NetworkInfo, WeatherLocalDataSourceImpl])
 void main() {
   late WeatherRepositoryImpl repository;
   late MockWeatherRemoteDataSourceImpl remoteDataSource;
+  late MockWeatherLocalDataSourceImpl mockLocalDataSource;
+  late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
     remoteDataSource = MockWeatherRemoteDataSourceImpl();
-    repository = WeatherRepositoryImpl(remoteDataSource);
+    mockLocalDataSource = MockWeatherLocalDataSourceImpl();
+    mockNetworkInfo = MockNetworkInfo();
+    repository = WeatherRepositoryImpl(
+        remoteDataSource, mockLocalDataSource, mockNetworkInfo);
   });
 
   group('getCurrentWeather', () {

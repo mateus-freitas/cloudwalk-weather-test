@@ -5,4 +5,5 @@ part 'cache_failure.freezed.dart';
 @freezed
 class CacheFailure with _$CacheFailure {
   const factory CacheFailure.unknownError({required int code}) = _UnknownError;
+  const factory CacheFailure.noCache() = _NoCache;
 }

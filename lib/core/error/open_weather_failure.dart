@@ -6,4 +6,5 @@ part 'open_weather_failure.freezed.dart';
 class OpenWeatherFailure with _$OpenWeatherFailure {
   const factory OpenWeatherFailure.unknownError({required int? code}) =
       _UnknownError;
+  const factory OpenWeatherFailure.noConnection() = _NoConnection;
 }

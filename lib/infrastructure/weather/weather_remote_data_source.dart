@@ -6,7 +6,7 @@ import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dar
 import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart';
 import 'package:weather_test/networking/requests/get_current_weather_request.dart';
 import 'package:weather_test/networking/requests/get_forecast_request.dart';
-import 'package:weather_test/networking/tmdb_dio_client.dart';
+import 'package:weather_test/networking/open_weather_client.dart';
 
 abstract class IWeatherRemoteDataSource {
   /// Performs a [GetCurrentWeatherRequest] call to TMDB API

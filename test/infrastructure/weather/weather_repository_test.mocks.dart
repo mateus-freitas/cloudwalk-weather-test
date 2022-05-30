@@ -5,11 +5,16 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:weather_test/core/platform/network_info.dart' as _i7;
 import 'package:weather_test/domain/concert_city/concert_city.dart' as _i5;
+import 'package:weather_test/domain/date_and_weather/date_and_weather.dart'
+    as _i9;
 import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dart'
     as _i6;
 import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart'
     as _i2;
+import 'package:weather_test/infrastructure/weather/weather_local_data_source.dart'
+    as _i8;
 import 'package:weather_test/infrastructure/weather/weather_remote_data_source.dart'
     as _i3;
 
@@ -47,4 +52,54 @@ class MockWeatherRemoteDataSourceImpl extends _i1.Mock
               returnValue: Future<List<_i6.DateAndWeatherDto>>.value(
                   <_i6.DateAndWeatherDto>[]))
           as _i4.Future<List<_i6.DateAndWeatherDto>>);
+}
+
+/// A class which mocks [NetworkInfo].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNetworkInfo extends _i1.Mock implements _i7.NetworkInfo {
+  MockNetworkInfo() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> get isConnected =>
+      (super.noSuchMethod(Invocation.getter(#isConnected),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+}
+
+/// A class which mocks [WeatherLocalDataSourceImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockWeatherLocalDataSourceImpl extends _i1.Mock
+    implements _i8.WeatherLocalDataSourceImpl {
+  MockWeatherLocalDataSourceImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.WeatherDto> getLastWeatherForCity(_i5.ConcertCity? city) =>
+      (super.noSuchMethod(Invocation.method(#getLastWeatherForCity, [city]),
+              returnValue: Future<_i2.WeatherDto>.value(_FakeWeatherDto_0()))
+          as _i4.Future<_i2.WeatherDto>);
+  @override
+  _i4.Future<List<_i6.DateAndWeatherDto>> getLastForecastForCity(
+          _i5.ConcertCity? city) =>
+      (super.noSuchMethod(Invocation.method(#getLastForecastForCity, [city]),
+              returnValue: Future<List<_i6.DateAndWeatherDto>>.value(
+                  <_i6.DateAndWeatherDto>[]))
+          as _i4.Future<List<_i6.DateAndWeatherDto>>);
+  @override
+  _i4.Future<void> cacheCurrentWeather(
+          _i5.ConcertCity? city, _i2.WeatherDto? weatherDto) =>
+      (super.noSuchMethod(
+          Invocation.method(#cacheCurrentWeather, [city, weatherDto]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  _i4.Future<void> cacheForecast(
+          List<_i9.DateAndWeather>? forecast, _i5.ConcertCity? city) =>
+      (super.noSuchMethod(Invocation.method(#cacheForecast, [forecast, city]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
 }

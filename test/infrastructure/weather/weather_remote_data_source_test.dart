@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:weather_test/infrastructure/weather/weather_remote_data_source.dart';
-import 'package:weather_test/networking/tmdb_dio_client.dart';
+import 'package:weather_test/networking/open_weather_client.dart';
 import 'weather_remote_data_source_test.mocks.dart';
 
 @GenerateMocks([OpenWeatherClient])

@@ -13,7 +13,7 @@ import '../../application/concert_cities/concert_cities_list_bloc.dart' as _i18;
 import '../../application/weather_forecast/weather_forecast_bloc.dart' as _i15;
 import '../../domain/concert_city/concert_city.dart' as _i16;
 import '../../domain/concert_city/i_concert_city_repository.dart' as _i6;
-import '../../domain/weather/i_weather_repository.dart' as _i12;
+import '../../domain/weather/i_weather_repository.dart' as _i13;
 import '../../domain/weather/weather.dart' as _i17;
 import '../../infrastructure/concert_cities/concert_city_local_data_source.dart'
     as _i5;
@@ -22,9 +22,9 @@ import '../../infrastructure/concert_cities/concert_city_repository_impl.dart'
 import '../../infrastructure/networking/i_dio_client.dart' as _i8;
 import '../../infrastructure/weather/weather_local_data_source.dart' as _i10;
 import '../../infrastructure/weather/weather_remote_data_source.dart' as _i11;
-import '../../infrastructure/weather/weather_repository_impl.dart' as _i13;
+import '../../infrastructure/weather/weather_repository_impl.dart' as _i14;
 import '../../networking/open_weather_client.dart' as _i9;
-import '../platform/network_info.dart' as _i14;
+import '../platform/network_info.dart' as _i12;
 import 'modules.dart' as _i19; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
@@ -46,15 +46,17 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i11.IWeatherRemoteDataSource>(() =>
       _i11.WeatherRemoteDataSourceImpl(
           get<_i8.IDioClient>(instanceName: 'OpenWeatherClient')));
-  gh.factory<_i12.IWeatherRepository>(
-      () => _i13.WeatherRepositoryImpl(get<_i11.IWeatherRemoteDataSource>()));
-  gh.factory<_i14.NetworkInfo>(
-      () => _i14.NetworkInfoImpl(get<_i3.Connectivity>()));
+  gh.factory<_i12.NetworkInfo>(
+      () => _i12.NetworkInfoImpl(get<_i3.Connectivity>()));
+  gh.factory<_i13.IWeatherRepository>(() => _i14.WeatherRepositoryImpl(
+      get<_i11.IWeatherRemoteDataSource>(),
+      get<_i10.IWeatherLocalDataSource>(),
+      get<_i12.NetworkInfo>()));
   gh.factoryParam<_i15.WeatherForecastBloc, _i16.ConcertCity, _i17.Weather>(
       (city, weather) => _i15.WeatherForecastBloc(
-          get<_i12.IWeatherRepository>(), city, weather));
+          get<_i13.IWeatherRepository>(), city, weather));
   gh.factory<_i18.ConcertCitiesListBloc>(() => _i18.ConcertCitiesListBloc(
-      get<_i6.IConcertCityRepository>(), get<_i12.IWeatherRepository>()));
+      get<_i6.IConcertCityRepository>(), get<_i13.IWeatherRepository>()));
   return get;
 }
 

@@ -19,7 +19,7 @@ abstract class IWeatherLocalDataSource {
   /// Throws a [CacheException] if there's no cached data or if it's expired
   Future<WeatherDto> getLastWeatherForCity(ConcertCity city);
 
-  Future<void> cacheCurrentWeather(ConcertCity city, Weather weather);
+  Future<void> cacheCurrentWeather(ConcertCity city, WeatherDto weatherDto);
 
   /// Gets the latest list of [DateAndWeatherDto] that's saved locally
   ///
@@ -65,11 +65,11 @@ class WeatherLocalDataSourceImpl implements IWeatherLocalDataSource {
   }
 
   @override
-  Future<void> cacheCurrentWeather(ConcertCity city, Weather weather) async {
+  Future<void> cacheCurrentWeather(
+      ConcertCity city, WeatherDto weatherDto) async {
     final box = await _hive.openBox(city.id);
     await Future.wait([
-      box.put(_cachedWeatherKey,
-          json.encode(WeatherDto.fromDomain(weather).toJson())),
+      box.put(_cachedWeatherKey, json.encode(weatherDto.toJson())),
       box.put(_cachedAtKey, DateTime.now().millisecondsSinceEpoch)
     ]);
   }

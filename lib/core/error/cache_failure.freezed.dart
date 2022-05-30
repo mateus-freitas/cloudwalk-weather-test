@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CacheFailure {
-  int get code => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int code) unknownError,
+    required TResult Function() noCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoCache value) noCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CacheFailureCopyWith<CacheFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,7 +61,6 @@ abstract class $CacheFailureCopyWith<$Res> {
   factory $CacheFailureCopyWith(
           CacheFailure value, $Res Function(CacheFailure) then) =
       _$CacheFailureCopyWithImpl<$Res>;
-  $Res call({int code});
 }
 
 /// @nodoc
@@ -70,27 +70,13 @@ class _$CacheFailureCopyWithImpl<$Res> implements $CacheFailureCopyWith<$Res> {
   final CacheFailure _value;
   // ignore: unused_field
   final $Res Function(CacheFailure) _then;
-
-  @override
-  $Res call({
-    Object? code = freezed,
-  }) {
-    return _then(_value.copyWith(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$_UnknownErrorCopyWith<$Res>
-    implements $CacheFailureCopyWith<$Res> {
+abstract class _$$_UnknownErrorCopyWith<$Res> {
   factory _$$_UnknownErrorCopyWith(
           _$_UnknownError value, $Res Function(_$_UnknownError) then) =
       __$$_UnknownErrorCopyWithImpl<$Res>;
-  @override
   $Res call({int code});
 }
 
@@ -152,6 +138,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int code) unknownError,
+    required TResult Function() noCache,
   }) {
     return unknownError(code);
   }
@@ -160,6 +147,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
   }) {
     return unknownError?.call(code);
   }
@@ -168,6 +156,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -180,6 +169,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoCache value) noCache,
   }) {
     return unknownError(this);
   }
@@ -188,6 +178,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
   }) {
     return unknownError?.call(this);
   }
@@ -196,6 +187,7 @@ class _$_UnknownError implements _UnknownError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -208,10 +200,111 @@ class _$_UnknownError implements _UnknownError {
 abstract class _UnknownError implements CacheFailure {
   const factory _UnknownError({required final int code}) = _$_UnknownError;
 
-  @override
   int get code => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$$_UnknownErrorCopyWith<_$_UnknownError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_NoCacheCopyWith<$Res> {
+  factory _$$_NoCacheCopyWith(
+          _$_NoCache value, $Res Function(_$_NoCache) then) =
+      __$$_NoCacheCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NoCacheCopyWithImpl<$Res> extends _$CacheFailureCopyWithImpl<$Res>
+    implements _$$_NoCacheCopyWith<$Res> {
+  __$$_NoCacheCopyWithImpl(_$_NoCache _value, $Res Function(_$_NoCache) _then)
+      : super(_value, (v) => _then(v as _$_NoCache));
+
+  @override
+  _$_NoCache get _value => super._value as _$_NoCache;
+}
+
+/// @nodoc
+
+class _$_NoCache implements _NoCache {
+  const _$_NoCache();
+
+  @override
+  String toString() {
+    return 'CacheFailure.noCache()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NoCache);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code) unknownError,
+    required TResult Function() noCache,
+  }) {
+    return noCache();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
+  }) {
+    return noCache?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code)? unknownError,
+    TResult Function()? noCache,
+    required TResult orElse(),
+  }) {
+    if (noCache != null) {
+      return noCache();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoCache value) noCache,
+  }) {
+    return noCache(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
+  }) {
+    return noCache?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoCache value)? noCache,
+    required TResult orElse(),
+  }) {
+    if (noCache != null) {
+      return noCache(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoCache implements CacheFailure {
+  const factory _NoCache() = _$_NoCache;
 }
