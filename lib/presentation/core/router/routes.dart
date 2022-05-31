@@ -1,6 +1,5 @@
 enum AppRoute {
   home,
-  favorites,
 }
 
 extension AppRoutesExtension on AppRoute {
@@ -8,8 +7,6 @@ extension AppRoutesExtension on AppRoute {
     switch (this) {
       case AppRoute.home:
         return '/';
-      case AppRoute.favorites:
-        return '/favorites';
     }
   }
 }
@@ -23,8 +20,6 @@ class AppRoutesTransformer {
     switch (name) {
       case '/':
         return AppRoute.home;
-      case '/favorites':
-        return AppRoute.favorites;
       default:
         return null;
     }
