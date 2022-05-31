@@ -54,6 +54,11 @@ class _ForecastWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (forecast.isEmpty) {
+      return Center(
+        child: Text(localize(context).noForecastMessage),
+      );
+    }
     return GridView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,

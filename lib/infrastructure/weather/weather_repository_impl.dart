@@ -64,13 +64,31 @@ class WeatherRepositoryImpl implements IWeatherRepository {
   @override
   Future<Either<OpenWeatherFailure, List<DateAndWeather>>> get5DayForecast(
       ConcertCity city, String? lang) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final forecastDtos = await _dataSource.getForecastForCity(city, lang);
+        _localDataSource.cacheForecast(forecastDtos, city);
+        return Right(forecastDtos.map((e) => e.toDomain()).toList());
+      } on OpenWeatherException catch (e) {
+        return Left(OpenWeatherFailure.unknownError(code: e.code));
+      } catch (e) {
+        return const Left(OpenWeatherFailure.unknownError(code: -1));
+      }
+    }
+    final cacheResult = await getCachedForecast(city);
+    return cacheResult.fold(
+        (_) => const Left(OpenWeatherFailure.noConnection()),
+        (forecast) => Right(forecast));
+  }
+
+  @visibleForTesting
+  Future<Either<CacheFailure, List<DateAndWeather>>> getCachedForecast(
+      ConcertCity city) async {
     try {
-      final weatherDtos = await _dataSource.getForecastForCity(city, lang);
-      return Right(weatherDtos.map((e) => e.toDomain()).toList());
-    } on OpenWeatherException catch (e) {
-      return Left(OpenWeatherFailure.unknownError(code: e.code));
-    } catch (e) {
-      return const Left(OpenWeatherFailure.unknownError(code: -1));
+      final dtos = await _localDataSource.getLastForecastForCity(city);
+      return Right(dtos.map((e) => e.toDomain()).toList());
+    } on CacheException catch (e) {
+      return const Left(CacheFailure.noCache());
     }
   }
 }

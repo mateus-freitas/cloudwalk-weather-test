@@ -6,6 +6,7 @@
   
   "home": "Home",
 
+  "noForecastMessage": "There is no forecast available for this city.",
   "emptyListMessage": "There is nothing here...",
   "generalErrorMessage": "There was an error. Please, check your connection and try again.",
   "serverOffline": "Our servers aren't responding. Please, try again later.",

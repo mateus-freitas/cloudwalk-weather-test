@@ -11,7 +11,9 @@ import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dar
 import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart';
 
 const _cachedWeatherKey = 'weather';
-const _cachedAtKey = 'cached_at';
+const _cachedForecastKey = 'forecast';
+const _cachedAtKey = 'weather_cached_at';
+const _forecastCachedAtKey = 'forecast_cached_at';
 
 abstract class IWeatherLocalDataSource {
   /// Gets the latest [WeatherDto] that's saved locally
@@ -26,7 +28,8 @@ abstract class IWeatherLocalDataSource {
   /// Throws a [CacheException] if there's no cached data or if it's expired
   Future<List<DateAndWeatherDto>> getLastForecastForCity(ConcertCity city);
 
-  Future<void> cacheForecast(List<DateAndWeather> forecast, ConcertCity city);
+  Future<void> cacheForecast(
+      List<DateAndWeatherDto> forecast, ConcertCity city);
 }
 
 @Injectable(as: IWeatherLocalDataSource)
@@ -59,9 +62,24 @@ class WeatherLocalDataSourceImpl implements IWeatherLocalDataSource {
   }
 
   @override
-  Future<List<DateAndWeatherDto>> getLastForecastForCity(ConcertCity city) {
-    // TODO: implement getLastForecastForCity
-    throw UnimplementedError();
+  Future<List<DateAndWeatherDto>> getLastForecastForCity(
+      ConcertCity city) async {
+    if (!(await _hive.boxExists(city.id))) throw CacheException();
+    final box = await _hive.openBox(city.id);
+
+    final cachedAtTimestamp = box.get(_forecastCachedAtKey);
+    if (cachedAtTimestamp is! int) throw CacheException();
+
+    final forecastCachedAt =
+        DateTime.fromMillisecondsSinceEpoch(cachedAtTimestamp);
+    if (_isCacheExpired(forecastCachedAt)) {
+      box.deleteAll([_forecastCachedAtKey, _cachedForecastKey]);
+      throw CacheException();
+    }
+    final jsonDataRaw = box.get(_cachedForecastKey);
+    if (jsonDataRaw == null) throw CacheException();
+    final decoded = json.decode(jsonDataRaw) as List<dynamic>;
+    return decoded.map((e) => DateAndWeatherDto.fromJson(e)).toList();
   }
 
   @override
@@ -75,8 +93,13 @@ class WeatherLocalDataSourceImpl implements IWeatherLocalDataSource {
   }
 
   @override
-  Future<void> cacheForecast(List<DateAndWeather> forecast, ConcertCity city) {
-    // TODO: implement cacheForecast
-    throw UnimplementedError();
+  Future<void> cacheForecast(
+      List<DateAndWeatherDto> forecast, ConcertCity city) async {
+    final box = await _hive.openBox(city.id);
+    await Future.wait([
+      box.put(_cachedForecastKey,
+          json.encode(forecast.map((e) => e.toJson()).toList())),
+      box.put(_forecastCachedAtKey, DateTime.now().millisecondsSinceEpoch)
+    ]);
   }
 }

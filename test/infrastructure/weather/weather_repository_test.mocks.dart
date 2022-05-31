@@ -7,8 +7,6 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:weather_test/core/platform/network_info.dart' as _i7;
 import 'package:weather_test/domain/concert_city/concert_city.dart' as _i5;
-import 'package:weather_test/domain/date_and_weather/date_and_weather.dart'
-    as _i9;
 import 'package:weather_test/infrastructure/weather/dto/date_and_weather_dto.dart'
     as _i6;
 import 'package:weather_test/infrastructure/weather/dto/weather_dto.dart'
@@ -98,7 +96,7 @@ class MockWeatherLocalDataSourceImpl extends _i1.Mock
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
   @override
   _i4.Future<void> cacheForecast(
-          List<_i9.DateAndWeather>? forecast, _i5.ConcertCity? city) =>
+          List<_i6.DateAndWeatherDto>? forecast, _i5.ConcertCity? city) =>
       (super.noSuchMethod(Invocation.method(#cacheForecast, [forecast, city]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
