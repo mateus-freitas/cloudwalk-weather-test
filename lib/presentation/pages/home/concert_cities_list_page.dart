@@ -25,7 +25,8 @@ class ConcertCitiesListPage extends StatelessWidget {
         ..add(const ConcertCitiesListEvent.loadConcertCities()),
       child: AppScaffold(
           title: localize(context).appTitle,
-          titleStyle: const TextStyle(fontWeight: FontWeight.w900),
+          titleStyle:
+              const TextStyle(fontWeight: FontWeight.w800, fontSize: 14),
           body: BlocConsumer<ConcertCitiesListBloc, ConcertCitiesListState>(
               builder: (context, states) {
                 return states.map<Widget>(
